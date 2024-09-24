@@ -8,7 +8,7 @@ estática e organização do código.
 
 ### 1. Gerenciamento do Acervo:
 
-#### Cadastro de Itens:
+#### Cadastro de Itens: - Gabryel
 
 - Cadastrar diferentes tipos de itens como livros, revistas, CDs e DVDs.
 - Definir informações específicas de cada tipo de item (ex: ISBN para livros,
@@ -16,28 +16,28 @@ estática e organização do código.
 - Controlar a localização física dos itens na biblioteca (ex: estante,
   prateleira).
 
-#### Edição de Itens:
+#### Edição de Itens: - Viviane
 
 - Atualizar as informações dos itens cadastrados.
 
-#### Remoção de Itens:
+#### Remoção de Itens: - Yasmin
 
 - Remover itens do sistema, considerando se existem empréstimos ativos para o
   item.
 
-#### Controle de Disponibilidade:
+#### Controle de Disponibilidade: - Yago
 
 - Visualizar a disponibilidade de cada item (disponível ou emprestado).
 
 ### Classes Principais:
 
-- `ItemAcervo`
-- `Livro`
-- `Revista`
-- `Midia`
-- `CD`
-- `DVD`
-- `Biblioteca`
+- `ItemAcervo` - Gabryel
+- `Livro` - Yago
+- `Revista` - Yasmin
+- `Midia` - Yasmin
+- `CD` - Viviane
+- `DVD` - Viviane
+- `Biblioteca` - Gabryel
 
 ### Classe Abstrata:
 
@@ -48,7 +48,7 @@ estática e organização do código.
 - `Publicacao` e `Midia` - Categorizam os tipos de itens de forma mais
   específica.
 
-### Interface:
+### Interface: - Yasmin
 
 - `Localizavel` - Implementada por classes que possuem localização física.
 
