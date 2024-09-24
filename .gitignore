@@ -1,0 +1,5 @@
+# remove a pasta node_modules
+node_modules/
+
+# remove todos os arquivos JS compilados
+dist/**/*.js
