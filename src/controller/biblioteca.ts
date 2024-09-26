@@ -14,12 +14,28 @@ class Biblioteca {
 
 	removerItem(id: number): void {
 		// const itemDoArray = this.acervo.find((item) => item.getId === id);
-		// if (itemDoArray) {
+
+		// try {
+		// 	if (!itemDoArray) {
+		// 		throw new Error("Item não encontrado.");
+		// 	}
+
+		// 	if (itemDoArray.getDisponivel !== true) {
+		// 		throw new Error("Item não disponível.");
+		// 	}
+
 		// 	const index = this.acervo.findIndex((item) => itemDoArray === item);
 		// 	this.acervo.splice(index, 1);
 		// 	console.log(`"${itemDoArray.getTitulo}" foi removido.`);
-		// } else {
-		// 	console.log("Item não encontrado.");
+		// } catch (error: unknown) {
+		// 	if (error instanceof Error) {
+		// 		console.error(
+		// 			"Ocorreu um erro ao tentar remover o item:",
+		// 			error.message
+		// 		);
+		// 	} else {
+		// 		console.error("Ocorreu um erro inesperado:", error);
+		// 	}
 		// }
 	}
 }
