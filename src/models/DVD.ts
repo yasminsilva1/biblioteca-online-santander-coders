@@ -1,15 +1,19 @@
-import { Midia } from './Midia';
+import { ItemAcervo } from './ItemAcervo';
 
-export class DVD extends Midia {
+export class DVD extends ItemAcervo {
     constructor(
         id: number,
         titulo: string,
         ano: number,
         localizacao: string,
-        duracao: number,
+        public duracao: number,
         status: string
     ) {
-        super(id, titulo, ano, localizacao, duracao, status);
+        if (duracao <= 0) {
+            throw new Error("A duração deve ser um valor positivo.");
+        }
+
+        super(id, titulo, ano, localizacao, status);
     }
 
     getInfo(): string {

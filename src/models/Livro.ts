@@ -6,10 +6,14 @@ export class Livro extends Publicacao {
         titulo: string,
         ano: number,
         localizacao: string,
-        public editora: string,
+        editora: string,
         public isbn: string,
-        public status: string
+        status: string
     ) {
+        if (!isbn) {
+            throw new Error("O ISBN não pode ser vazio.");
+        }
+
         super(id, titulo, ano, localizacao, editora, status);
     }
 
