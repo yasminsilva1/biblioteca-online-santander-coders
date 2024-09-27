@@ -9,9 +9,7 @@ class Biblioteca {
         this.acervo.push(item);
     }
     listarItens() {
-        this.acervo.forEach(item => {
-            console.log(item.getInfo());
-        });
+        return this.acervo;
     }
     atualizarItem(id, novoItem) {
         const index = this.acervo.findIndex(item => item.id === id);

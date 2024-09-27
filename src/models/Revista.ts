@@ -6,12 +6,13 @@ export class Revista extends Publicacao {
         titulo: string,
         ano: number,
         localizacao: string,
-        editora: string
+        editora: string,
+        status: string
     ) {
-        super(id, titulo, ano, localizacao, editora);
+        super(id, titulo, ano, localizacao, editora, status);
     }
 
     getInfo(): string {
-        return `Revista: ${this.titulo}, Editora: ${this.editora}`;
+        return `Revista: ${this.titulo}, Editora: ${this.editora}, Status: ${this.status}`;
     }
 }

@@ -6,8 +6,11 @@ export abstract class Publicacao extends ItemAcervo {
         titulo: string,
         ano: number,
         localizacao: string,
-        public editora: string
+        public editora: string,
+        public status: string
     ) {
-        super(id, titulo, ano, localizacao);
+        super(id, titulo, ano, localizacao, status);
     }
+
+    abstract getInfo(): string;
 }

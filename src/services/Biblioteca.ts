@@ -7,10 +7,8 @@ export class Biblioteca {
         this.acervo.push(item);
     }
 
-    listarItens(): void {
-        this.acervo.forEach(item => {
-            console.log(item.getInfo());
-        });
+    listarItens(): ItemAcervo[] {
+        return this.acervo;
     }
 
     atualizarItem(id: number, novoItem: ItemAcervo): void {

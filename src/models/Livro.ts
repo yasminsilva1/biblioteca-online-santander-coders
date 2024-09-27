@@ -6,13 +6,14 @@ export class Livro extends Publicacao {
         titulo: string,
         ano: number,
         localizacao: string,
-        editora: string,
-        public isbn: string
+        public editora: string,
+        public isbn: string,
+        public status: string
     ) {
-        super(id, titulo, ano, localizacao, editora);
+        super(id, titulo, ano, localizacao, editora, status);
     }
 
     getInfo(): string {
-        return `Livro: ${this.titulo}, ISBN: ${this.isbn}`;
+        return `Livro: ${this.titulo}, ISBN: ${this.isbn}, Status: ${this.status}`;
     }
 }

@@ -6,8 +6,9 @@ export abstract class Midia extends ItemAcervo {
         titulo: string,
         ano: number,
         localizacao: string,
-        public duracao: number
+        public duracao: number,
+        public status: string
     ) {
-        super(id, titulo, ano, localizacao);
+        super(id, titulo, ano, localizacao, status);
     }
 }

@@ -6,12 +6,13 @@ export class CD extends Midia {
         titulo: string,
         ano: number,
         localizacao: string,
-        duracao: number
+        duracao: number,
+        status: string
     ) {
-        super(id, titulo, ano, localizacao, duracao);
+        super(id, titulo, ano, localizacao, duracao, status);
     }
 
     getInfo(): string {
-        return `CD: ${this.titulo}, Duração: ${this.duracao} minutos`;
+        return `CD: ${this.titulo}, Duração: ${this.duracao} minutos, Status: ${this.status}`;
     }
 }
