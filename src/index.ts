@@ -12,57 +12,57 @@ let nextId = 1;
 
 function menu() {
     console.log('\n--- Biblioteca Online ---');
-    console.log('1. Adicionar Item');
-    console.log('2. Listar Itens');
-    console.log('3. Remover Item');
-    console.log('4. Editar Item');
-    console.log('5. Sair');
+    console.log('[1]. Adicionar Item');
+    console.log('[2]. Listar Itens');
+    console.log('[3]. Remover Item');
+    console.log('[4]. Editar Item');
+    console.log('[5]. Sair');
     const choice = readlineSync.question('Escolha uma opcao: ');
     return choice;
 }
 
 function menuAdicionar() {
     console.log('\n--- Adicionar Item ---');
-    console.log('1. Adicionar Livro');
-    console.log('2. Adicionar Revista');
-    console.log('3. Adicionar CD');
-    console.log('4. Adicionar DVD');
-    console.log('5. Voltar');
+    console.log('[1]. Adicionar Livro');
+    console.log('[2]. Adicionar Revista');
+    console.log('[3]. Adicionar CD');
+    console.log('[4]. Adicionar DVD');
+    console.log('[5]. Voltar');
     const choice = readlineSync.question('Escolha uma opcao: ');
     return choice;
 }
 
 function menuListar() {
     console.log('\n--- Listar Itens ---');
-    console.log('1. Listar Livros');
-    console.log('2. Listar Revistas');
-    console.log('3. Listar CDs');
-    console.log('4. Listar DVDs');
-    console.log('5. Listar Todos os Itens');
-    console.log('6. Voltar');
+    console.log('[1]. Listar Livros');
+    console.log('[2]. Listar Revistas');
+    console.log('[3]. Listar CDs');
+    console.log('[4]. Listar DVDs');
+    console.log('[5]. Listar Todos os Itens');
+    console.log('[6]. Voltar');
     const choice = readlineSync.question('Escolha uma opcao: ');
     return choice;
 }
 
 function menuRemover() {
     console.log('\n--- Remover Item ---');
-    console.log('1. Remover Livro');
-    console.log('2. Remover Revista');
-    console.log('3. Remover CD');
-    console.log('4. Remover DVD');
-    console.log('5. Remover Todos os Itens');
-    console.log('6. Voltar');
+    console.log('[1]. Remover Livro');
+    console.log('[2]. Remover Revista');
+    console.log('[3]. Remover CD');
+    console.log('[4]. Remover DVD');
+    console.log('[5]. Remover Todos os Itens');
+    console.log('[6]. Voltar');
     const choice = readlineSync.question('Escolha uma opcao: ');
     return choice;
 }
 
 function menuEditar() {
     console.log('\n--- Editar Item ---');
-    console.log('1. Editar Livro');
-    console.log('2. Editar Revista');
-    console.log('3. Editar CD');
-    console.log('4. Editar DVD');
-    console.log('5. Voltar');
+    console.log('[1]. Editar Livro');
+    console.log('[2]. Editar Revista');
+    console.log('[3]. Editar CD');
+    console.log('[4]. Editar DVD');
+    console.log('[5]. Voltar');
     const choice = readlineSync.question('Escolha uma opcao: ');
     return choice;
 }
