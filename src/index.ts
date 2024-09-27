@@ -169,6 +169,7 @@ function editarLivro() {
     const id = parseInt(readlineSync.question('ID do livro a ser editado: '));
     const livro = biblioteca.listarItens().find((item: ItemAcervo) => item.id === id && item instanceof Livro) as Livro;
     if (livro) {
+        console.log(`Livro encontrado deixe em branco para não editar o campo atual`);
         const titulo = readlineSync.question(`Titulo (${livro.titulo}): `, { defaultInput: livro.titulo });
         const ano = parseInt(readlineSync.question(`Ano (${livro.ano}): `, { defaultInput: livro.ano.toString() }));
         const localizacao = readlineSync.question(`Localizacao (${livro.localizacao}): `, { defaultInput: livro.localizacao });
@@ -186,6 +187,7 @@ function editarRevista() {
     const id = parseInt(readlineSync.question('ID da revista a ser editada: '));
     const revista = biblioteca.listarItens().find((item: ItemAcervo) => item.id === id && item instanceof Revista) as Revista;
     if (revista) {
+        console.log(`Revista encontrada deixe em branco para não editar o campo atual`);
         const titulo = readlineSync.question(`Titulo (${revista.titulo}): `, { defaultInput: revista.titulo });
         const ano = parseInt(readlineSync.question(`Ano (${revista.ano}): `, { defaultInput: revista.ano.toString() }));
         const localizacao = readlineSync.question(`Localizacao (${revista.localizacao}): `, { defaultInput: revista.localizacao });
@@ -203,6 +205,7 @@ function editarCD() {
     const id = parseInt(readlineSync.question('ID do CD a ser editado: '));
     const cd = biblioteca.listarItens().find((item: ItemAcervo) => item.id === id && item instanceof CD) as CD;
     if (cd) {
+        console.log(`CD encontrada deixe em branco para não editar o campo atual`);
         const titulo = readlineSync.question(`Titulo (${cd.titulo}): `, { defaultInput: cd.titulo });
         const ano = parseInt(readlineSync.question(`Ano (${cd.ano}): `, { defaultInput: cd.ano.toString() }));
         const localizacao = readlineSync.question(`Localizacao (${cd.localizacao}): `, { defaultInput: cd.localizacao });
@@ -220,6 +223,7 @@ function editarDVD() {
     const id = parseInt(readlineSync.question('ID do DVD a ser editado: '));
     const dvd = biblioteca.listarItens().find((item: ItemAcervo) => item.id === id && item instanceof DVD) as DVD;
     if (dvd) {
+        console.log(`DVD encontrada deixe em branco para não editar o campo atual`);
         const titulo = readlineSync.question(`Titulo (${dvd.titulo}): `, { defaultInput: dvd.titulo });
         const ano = parseInt(readlineSync.question(`Ano (${dvd.ano}): `, { defaultInput: dvd.ano.toString() }));
         const localizacao = readlineSync.question(`Localizacao (${dvd.localizacao}): `, { defaultInput: dvd.localizacao });

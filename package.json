@@ -2,9 +2,22 @@
   "devDependencies": {
     "@types/node": "^22.7.2",
     "@types/readline-sync": "^1.4.8",
+    "ts-node": "^10.9.2",
     "typescript": "^5.6.2"
   },
   "dependencies": {
     "readline-sync": "^1.4.10"
-  }
+  },
+  "name": "biblioteca-online-santander-coders",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
