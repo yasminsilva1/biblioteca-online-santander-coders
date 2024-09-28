@@ -11,7 +11,7 @@ class CD extends ItemAcervo_1.ItemAcervo {
         this.duracao = duracao;
     }
     getInfo() {
-        return `CD: ${this.titulo}, Duração: ${this.duracao} minutos, Status: ${this.status}`;
+        return `ID: ${this.id}, CD: ${this.titulo}, Duração: ${this.duracao} minutos, Status: ${this.status}`;
     }
 }
 exports.CD = CD;

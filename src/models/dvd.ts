@@ -17,6 +17,6 @@ export class DVD extends ItemAcervo {
     }
 
     getInfo(): string {
-        return `DVD: ${this.titulo}, Duração: ${this.duracao} minutos, Status: ${this.status}`;
+        return `ID: ${this.id}, DVD: ${this.titulo}, Duração: ${this.duracao} minutos, Status: ${this.status}`;
     }
 }

@@ -1,4 +1,4 @@
-import { Publicacao } from './Publicacao';
+import { Publicacao } from './publicacao';
 
 export class Revista extends Publicacao {
     constructor(
@@ -13,6 +13,6 @@ export class Revista extends Publicacao {
     }
 
     getInfo(): string {
-        return `Revista: ${this.titulo}, Editora: ${this.editora}, Status: ${this.status}`;
+        return `ID: ${this.id}, Revista: ${this.titulo}, Editora: ${this.editora}, Status: ${this.status}`;
     }
 }

@@ -17,6 +17,6 @@ export class CD extends ItemAcervo {
     }
 
     getInfo(): string {
-        return `CD: ${this.titulo}, Duração: ${this.duracao} minutos, Status: ${this.status}`;
+        return `ID: ${this.id}, CD: ${this.titulo}, Duração: ${this.duracao} minutos, Status: ${this.status}`;
     }
 }
