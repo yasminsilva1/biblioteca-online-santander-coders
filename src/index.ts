@@ -237,7 +237,7 @@ function cadastrarLivro() {
     const ano = validarAno('Ano');
     const localizacao = validarCampoObrigatorio('Localizacao');
 
-    const livro = new Livro(titulo, isbn, autor, editora, ano, localizacao,);
+    const livro = new Livro(titulo, ano, localizacao, isbn, autor, editora);
     registrarItem(biblioteca, livro);
     console.log(`Livro cadastrado com sucesso! ID: ${livro.id}, Titulo: ${livro.titulo}, Autor: ${livro.autor}, Editora: ${livro.editora}, ISBN: ${livro.isbn}, Ano: ${livro.ano}, Localizacao: ${livro.localizacao}`);
     mostrarMenu();
@@ -249,7 +249,7 @@ function cadastrarRevista() {
     const ano = validarAno('Ano');
     const localizacao = validarCampoObrigatorio('Localizacao');
 
-    const revista = new Revista(titulo, editora, ano, localizacao);
+    const revista = new Revista(titulo, ano, localizacao, editora);
     registrarItem(biblioteca, revista);
     console.log(`Revista cadastrada com sucesso! ID: ${revista.id}, Titulo: ${revista.titulo}, Editora: ${revista.editora}, Ano: ${revista.ano}, Localizacao: ${revista.localizacao}`);
     mostrarMenu();
