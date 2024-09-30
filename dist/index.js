@@ -308,6 +308,9 @@ function editarItem(tipo) {
     if (item instanceof Livro_1.default) {
         console.log(`ISBN: ${item.isbn}, Autor: ${item.autor}, Editora: ${item.editora}`);
     }
+    if (item instanceof Revista_1.default) {
+        console.log(`Editora: ${item.editora}`);
+    }
     if (item instanceof Midia_1.default) {
         console.log(`Duracao: ${item.duracao}`);
     }

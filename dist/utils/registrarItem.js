@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function registrarItem(biblioteca, item) {
+function RegistrarItem(biblioteca, item) {
     biblioteca.adicionarItem(item);
 }
-exports.default = registrarItem;
+exports.default = RegistrarItem;
