@@ -9,7 +9,6 @@ abstract class Midia extends ItemAcervo {
             throw new Error("Duração é obrigatória");
         }
         this.duracao = duracao;
-    }
 }
 
 export default Midia;
