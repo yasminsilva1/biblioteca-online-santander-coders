@@ -294,6 +294,11 @@ function editarItem(tipo) {
         if (isbnStr)
             item.isbn = parseInt(isbnStr, 10);
     }
+    if (item instanceof Revista_1.default) {
+        const editora = readline_sync_1.default.question('Nova Editora (deixe em branco para manter o atual): ');
+        if (editora)
+            item.editora = editora;
+    }
     if (item instanceof Midia_1.default) {
         const duracaoStr = readline_sync_1.default.question('Nova Duracao (em minutos, deixe em branco para manter o atual): ', { defaultInput: item.duracao.toString() });
         if (duracaoStr)
