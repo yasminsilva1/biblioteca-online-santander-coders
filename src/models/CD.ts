@@ -1,3 +1,4 @@
+
 import Midia from './Midia';
 
 class CD extends Midia {

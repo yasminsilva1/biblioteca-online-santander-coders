@@ -8,7 +8,9 @@ estática e organização do código.
 
 ### 1. Gerenciamento do Acervo:
 
+
 #### Cadastro de Itens:
+
 
 - Cadastrar diferentes tipos de itens como livros, revistas, CDs e DVDs.
 - Definir informações específicas de cada tipo de item (ex: ISBN para livros,
@@ -22,14 +24,17 @@ estática e organização do código.
 
 #### Remoção de Itens:
 
+
 - Remover itens do sistema, considerando se existem empréstimos ativos para o
   item.
 
 #### Controle de Disponibilidade:
 
+
 - Visualizar a disponibilidade de cada item (disponível ou emprestado).
 
 ### Classes Principais:
+
 
 - `ItemAcervo`
 - `Livro`
@@ -38,6 +43,7 @@ estática e organização do código.
 - `CD`
 - `DVD`
 - `Biblioteca`
+
 
 ### Classe Abstrata:
 
@@ -48,7 +54,9 @@ estática e organização do código.
 - `Publicacao` e `Midia` - Categorizam os tipos de itens de forma mais
   específica.
 
+
 ### Interface:
+
 
 - `Localizavel` - Implementada por classes que possuem localização física.
 

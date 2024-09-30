@@ -1,3 +1,4 @@
+
 import Publicacao from './Publicacao';
 
 class Livro extends Publicacao {
