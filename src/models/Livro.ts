@@ -1,23 +1,19 @@
-import { Publicacao } from "./publicacao";
 
-export class Livro extends Publicacao {
-	constructor(
-		id: number,
-		titulo: string,
-		ano: number,
-		localizacao: string,
-		editora: string,
-		public isbn: string,
-		status: string
-	) {
-		if (!isbn) {
-			throw new Error("O ISBN não pode ser vazio.");
-		}
+import Publicacao from './Publicacao';
 
-		super(id, titulo, ano, localizacao, editora, status);
-	}
+class Livro extends Publicacao {
+    isbn: number;
+    autor: string;
 
-	getInfo(): string {
-		return `ID: ${this.id}, Livro: ${this.titulo}, ISBN: ${this.isbn}, Status: ${this.status}`;
-	}
+    constructor(titulo: string, ano: number, localizacao: string, isbn: number, autor: string, editora: string) {
+        super(titulo, ano, localizacao, editora);
+        const isbnStr = isbn.toString();
+        if (!isbn || isbnStr.length !== 13) {
+            throw new Error("ISBN é obrigatório e deve ter 13 caracteres");
+        }
+        this.isbn = isbn;
+        this.autor = autor;
+    }
 }
+
+export default Livro;

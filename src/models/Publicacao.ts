@@ -1,16 +1,12 @@
-import { ItemAcervo } from './ItemAcervo';
+import ItemAcervo from './ItemAcervo';
 
-export abstract class Publicacao extends ItemAcervo {
-    constructor(
-        id: number,
-        titulo: string,
-        ano: number,
-        localizacao: string,
-        public editora: string,
-        public status: string
-    ) {
-        super(id, titulo, ano, localizacao, status);
+class Publicacao extends ItemAcervo {
+    editora: string;
+
+    constructor(titulo: string, ano: number, localizacao: string, editora: string) {
+        super(titulo, ano, localizacao);
+        this.editora = editora;
     }
-
-    abstract getInfo(): string;
 }
+
+export default Publicacao;

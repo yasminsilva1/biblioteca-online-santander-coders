@@ -1,4 +1,5 @@
-export interface Localizavel {
+interface Localizavel {
   localizacao: string;
-  status: string;
 }
+
+export default Localizavel;

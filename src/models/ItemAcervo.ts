@@ -1,50 +1,28 @@
-export abstract class ItemAcervo {
-	constructor(
-		public id: number,
-		public titulo: string,
-		public ano: number,
-		public localizacao: string,
-		public status: string
-	) {
-		if (!titulo) {
-			throw new Error("O título não pode ser vazio.");
-		}
-		if (ano <= 0) {
-			throw new Error("O ano deve ser um valor positivo.");
-		}
-		if (!localizacao) {
-			throw new Error("A localização não pode ser vazia.");
-		}
-		if (!status) {
-			throw new Error("O status não pode ser vazio.");
-		}
-	}
 
-	// get getTitulo(): string {
-	// 	return this.titulo;
-	// }
+import Localizavel from '../interfaces/Localizavel';
 
-	// set setTitulo(titulo: string) {
-	// 	try {
-	// 		if (!titulo) {
-	// 			throw new Error("O título não pode ser vazio.");
-	// 		}
-	// 	} catch (error) {
-    //         console.error(error)
-    //     }
-	// }
+let currentId = 0;
 
-	// get getAno(): number {
-	// 	return this.ano;
-	// }
+type Disponibilidade = 'Disponivel' | 'Indisponivel' | 'Alugado' | 'Reservado';
 
-	// get getLocalizacao(): string {
-	// 	return this.localizacao;
-	// }
+abstract class ItemAcervo implements Localizavel {
+    id: number;
+    titulo: string;
+    ano: number;
+    localizacao: string;
+    disponibilidade: Disponibilidade;
 
-	// get getStatus(): string {
-	// 	return this.status;
-	// }
-
-	abstract getInfo(): string;
+    constructor(titulo: string, ano: number, localizacao: string, disponibilidade: Disponibilidade = 'Disponivel') {
+        if (!titulo || !ano || !localizacao) {
+            throw new Error("Todos os campos são obrigatórios");
+        }
+        this.id = ++currentId;
+        this.titulo = titulo;
+        this.ano = ano;
+        this.localizacao = localizacao;
+        this.disponibilidade = disponibilidade;
+    }
 }
+
+export default ItemAcervo;
+export type { Disponibilidade };

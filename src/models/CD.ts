@@ -1,22 +1,10 @@
-import { ItemAcervo } from './ItemAcervo';
 
-export class CD extends ItemAcervo {
-    constructor(
-        id: number,
-        titulo: string,
-        ano: number,
-        localizacao: string,
-        public duracao: number,
-        status: string
-    ) {
-        if (duracao <= 0) {
-            throw new Error("A duração deve ser um valor positivo.");
-        }
+import Midia from './Midia';
 
-        super(id, titulo, ano, localizacao, status);
-    }
-
-    getInfo(): string {
-        return `CD: ${this.titulo}, Duração: ${this.duracao} minutos, Status: ${this.status}`;
+class CD extends Midia {
+    constructor(titulo: string, ano: number, localizacao: string, duracao: number) {
+        super(titulo, ano, localizacao, duracao);
     }
 }
+
+export default CD;
