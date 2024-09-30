@@ -12,12 +12,12 @@ const biblioteca = new Biblioteca();
 
 function mostrarMenu() {
     console.log(`
-    1. Adicionar Item
-    2. Editar Item
-    3. Remover Item
-    4. Verificar Disponibilidade
-    5. Listar Itens
-    6. Sair
+    [1]. Adicionar Item
+    [2]. Editar Item
+    [3]. Remover Item
+    [4]. Verificar Disponibilidade
+    [5]. Listar Itens
+    [6]. Sair
     `);
     const opcao = readlineSync.question('Escolha uma opcao: ');
     switch (opcao) {
@@ -48,11 +48,11 @@ function mostrarMenu() {
 
 function menuAdicionar() {
     console.log(`
-    1. Cadastrar Livro
-    2. Cadastrar Revista
-    3. Cadastrar CD
-    4. Cadastrar DVD
-    5. Voltar
+    [1]. Cadastrar Livro
+    [2]. Cadastrar Revista
+    [3]. Cadastrar CD
+    [4]. Cadastrar DVD
+    [5]. Voltar
     `);
     const opcao = readlineSync.question('Escolha uma opcao: ');
     switch (opcao) {
@@ -80,11 +80,11 @@ function menuAdicionar() {
 
 function menuEditar() {
     console.log(`
-    1. Editar Livro
-    2. Editar Revista
-    3. Editar CD
-    4. Editar DVD
-    5. Voltar
+    [1]. Editar Livro
+    [2]. Editar Revista
+    [3]. Editar CD
+    [4]. Editar DVD
+    [5]. Voltar
     `);
     const opcao = readlineSync.question('Escolha uma opcao: ');
     switch (opcao) {
@@ -112,12 +112,12 @@ function menuEditar() {
 
 function menuRemover() {
     console.log(`
-    1. Remover Livro
-    2. Remover Revista
-    3. Remover CD
-    4. Remover DVD
-    5. Remover Todos
-    6. Voltar
+    [1]. Remover Livro
+    [2]. Remover Revista
+    [3]. Remover CD
+    [4]. Remover DVD
+    [5]. Remover Todos
+    [6]. Voltar
     `);
     const opcao = readlineSync.question('Escolha uma opcao: ');
     switch (opcao) {
@@ -148,12 +148,12 @@ function menuRemover() {
 
 function menuListar() {
     console.log(`
-    1. Listar Livros
-    2. Listar Revistas
-    3. Listar CDs
-    4. Listar DVDs
-    5. Listar Todos
-    6. Voltar
+    [1]. Listar Livros
+    [2]. Listar Revistas
+    [3]. Listar CDs
+    [4]. Listar DVDs
+    [5]. Listar Todos
+    [6]. Voltar
     `);
     const opcao = readlineSync.question('Escolha uma opcao: ');
     switch (opcao) {
