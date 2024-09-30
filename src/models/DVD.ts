@@ -1,18 +1,9 @@
-import { Midia } from './Midia';
+import Midia from './Midia';
 
-export class dvd extends Midia {
-    constructor(
-        id: number,
-        titulo: string,
-        ano: number,
-        localizacao: string,
-        duracao: number,
-        status: string
-    ) {
-        super(id, titulo, ano, localizacao, duracao, status);
-    }
-
-    getInfo(): string {
-        return `DVD: ${this.titulo}, Duração: ${this.duracao} minutos, Status: ${this.status}`;
+class DVD extends Midia {
+    constructor(titulo: string, ano: number, localizacao: string, duracao: number) {
+        super(titulo, ano, localizacao, duracao);
     }
 }
+
+export default DVD;

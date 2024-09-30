@@ -1,343 +1,375 @@
-import { Biblioteca } from './services/Biblioteca';
-import { Livro } from './models/Livro';
-import { Revista } from './models/Revista';
-import { CD } from './models/CD';
-import { dvd } from './models/DVD';
-import { ItemAcervo } from './models/ItemAcervo';
-import { registrarItem } from './services/registrarItem';
 import readlineSync from 'readline-sync';
+import Biblioteca from './models/Biblioteca';
+import Livro from './models/Livro';
+import Revista from './models/Revista';
+import CD from './models/CD';
+import DVD from './models/DVD';
+import registrarItem from './utils/RegistrarItem';
+import { Disponibilidade } from './models/ItemAcervo';
+import Midia from './models/Midia';
 
 const biblioteca = new Biblioteca();
-let nextId = 1;
 
-function menu() {
-    console.log('\n--- Biblioteca Online ---');
-    console.log('[1]. Adicionar Item');
-    console.log('[2]. Listar Itens');
-    console.log('[3]. Remover Item');
-    console.log('[4]. Editar Item');
-    console.log('[5]. Sair');
-    const choice = readlineSync.question('Escolha uma opcao: ');
-    return choice;
-}
-
-function menuAdicionar() {
-    console.log('\n--- Adicionar Item ---');
-    console.log('[1]. Adicionar Livro');
-    console.log('[2]. Adicionar Revista');
-    console.log('[3]. Adicionar CD');
-    console.log('[4]. Adicionar DVD');
-    console.log('[5]. Voltar');
-    const choice = readlineSync.question('Escolha uma opcao: ');
-    return choice;
-}
-
-function menuListar() {
-    console.log('\n--- Listar Itens ---');
-    console.log('[1]. Listar Livros');
-    console.log('[2]. Listar Revistas');
-    console.log('[3]. Listar CDs');
-    console.log('[4]. Listar DVDs');
-    console.log('[5]. Listar Todos os Itens');
-    console.log('[6]. Voltar');
-    const choice = readlineSync.question('Escolha uma opcao: ');
-    return choice;
-}
-
-function menuRemover() {
-    console.log('\n--- Remover Item ---');
-    console.log('[1]. Remover Livro');
-    console.log('[2]. Remover Revista');
-    console.log('[3]. Remover CD');
-    console.log('[4]. Remover DVD');
-    console.log('[5]. Remover Todos os Itens');
-    console.log('[6]. Voltar');
-    const choice = readlineSync.question('Escolha uma opcao: ');
-    return choice;
-}
-
-function menuEditar() {
-    console.log('\n--- Editar Item ---');
-    console.log('[1]. Editar Livro');
-    console.log('[2]. Editar Revista');
-    console.log('[3]. Editar CD');
-    console.log('[4]. Editar DVD');
-    console.log('[5]. Voltar');
-    const choice = readlineSync.question('Escolha uma opcao: ');
-    return choice;
-}
-
-function adicionarLivro() {
-    const id = nextId++;
-    const titulo = readlineSync.question('Titulo: ');
-    const ano = parseInt(readlineSync.question('Ano: '));
-    const localizacao = readlineSync.question('Localizacao: ');
-    const editora = readlineSync.question('Editora: ');
-    const isbn = readlineSync.question('ISBN: ');
-    const status = 'disponível';
-    const livro = new Livro(id, titulo, ano, localizacao, editora, isbn, status);
-    registrarItem(biblioteca, livro);
-    console.log('Livro adicionado com sucesso!');
-}
-
-function adicionarRevista() {
-    const id = nextId++;
-    const titulo = readlineSync.question('Titulo: ');
-    const ano = parseInt(readlineSync.question('Ano: '));
-    const localizacao = readlineSync.question('Localizacao: ');
-    const editora = readlineSync.question('Editora: ');
-    const status = 'disponível';
-    const revista = new Revista(id, titulo, ano, localizacao, editora, status);
-    registrarItem(biblioteca, revista);
-    console.log('Revista adicionada com sucesso!');
-}
-
-function adicionarCD() {
-    const id = nextId++;
-    const titulo = readlineSync.question('Titulo: ');
-    const ano = parseInt(readlineSync.question('Ano: '));
-    const localizacao = readlineSync.question('Localizacao: ');
-    const duracao = parseInt(readlineSync.question('Duracao (minutos): '));
-    const status = 'disponível';
-    const cd = new CD(id, titulo, ano, localizacao, duracao, status);
-    registrarItem(biblioteca, cd);
-    console.log('CD adicionado com sucesso!');
-}
-
-function adicionarDVD() {
-    const id = nextId++;
-    const titulo = readlineSync.question('Titulo: ');
-    const ano = parseInt(readlineSync.question('Ano: '));
-    const localizacao = readlineSync.question('Localizacao: ');
-    const duracao = parseInt(readlineSync.question('Duracao (minutos): '));
-    const status = 'disponível';
-    const dvd = new DVD(id, titulo, ano, localizacao, duracao, status);
-    registrarItem(biblioteca, dvd);
-    console.log('DVD adicionado com sucesso!');
-}
-
-function listarLivros() {
-    biblioteca.listarItens().filter((item: ItemAcervo) => item instanceof Livro).forEach((item: ItemAcervo) => console.log(item.getInfo()));
-}
-
-function listarRevistas() {
-    biblioteca.listarItens().filter((item: ItemAcervo) => item instanceof Revista).forEach((item: ItemAcervo) => console.log(item.getInfo()));
-}
-
-function listarCDs() {
-    biblioteca.listarItens().filter((item: ItemAcervo) => item instanceof CD).forEach((item: ItemAcervo) => console.log(item.getInfo()));
-}
-
-function listarDVDs() {
-    biblioteca.listarItens().filter((item: ItemAcervo) => item instanceof DVD).forEach((item: ItemAcervo) => console.log(item.getInfo()));
-}
-
-function listarTodosItens() {
-    biblioteca.listarItens().forEach((item: ItemAcervo) => console.log(item.getInfo()));
-}
-
-function removerLivro() {
-    const id = parseInt(readlineSync.question('ID do livro a ser removido: '));
-    biblioteca.removerItem(id);
-    console.log('Livro removido com sucesso!');
-}
-
-function removerRevista() {
-    const id = parseInt(readlineSync.question('ID da revista a ser removida: '));
-    biblioteca.removerItem(id);
-    console.log('Revista removida com sucesso!');
-}
-
-function removerCD() {
-    const id = parseInt(readlineSync.question('ID do CD a ser removido: '));
-    biblioteca.removerItem(id);
-    console.log('CD removido com sucesso!');
-}
-
-function removerDVD() {
-    const id = parseInt(readlineSync.question('ID do DVD a ser removido: '));
-    biblioteca.removerItem(id);
-    console.log('DVD removido com sucesso!');
-}
-
-function removerTodosItens() {
-    biblioteca.listarItens().forEach((item: ItemAcervo) => biblioteca.removerItem(item.id));
-    console.log('Todos os itens foram removidos com sucesso!');
-}
-
-function editarLivro() {
-    const id = parseInt(readlineSync.question('ID do livro a ser editado: '));
-    const livro = biblioteca.listarItens().find((item: ItemAcervo) => item.id === id && item instanceof Livro) as Livro;
-    if (livro) {
-        console.log(`Livro encontrado deixe em branco para não editar o campo atual`);
-        const titulo = readlineSync.question(`Titulo (${livro.titulo}): `, { defaultInput: livro.titulo });
-        const ano = parseInt(readlineSync.question(`Ano (${livro.ano}): `, { defaultInput: livro.ano.toString() }));
-        const localizacao = readlineSync.question(`Localizacao (${livro.localizacao}): `, { defaultInput: livro.localizacao });
-        const editora = readlineSync.question(`Editora (${livro.editora}): `, { defaultInput: livro.editora });
-        const status = readlineSync.question(`Status (${livro.status}): `, { defaultInput: livro.status });
-        const novoLivro = new Livro(id, titulo, ano, localizacao, editora, livro.isbn, status);
-        biblioteca.atualizarItem(id, novoLivro);
-        console.log('Livro editado com sucesso!');
-    } else {
-        console.log('Livro não encontrado!');
-    }
-}
-
-function editarRevista() {
-    const id = parseInt(readlineSync.question('ID da revista a ser editada: '));
-    const revista = biblioteca.listarItens().find((item: ItemAcervo) => item.id === id && item instanceof Revista) as Revista;
-    if (revista) {
-        console.log(`Revista encontrada deixe em branco para não editar o campo atual`);
-        const titulo = readlineSync.question(`Titulo (${revista.titulo}): `, { defaultInput: revista.titulo });
-        const ano = parseInt(readlineSync.question(`Ano (${revista.ano}): `, { defaultInput: revista.ano.toString() }));
-        const localizacao = readlineSync.question(`Localizacao (${revista.localizacao}): `, { defaultInput: revista.localizacao });
-        const editora = readlineSync.question(`Editora (${revista.editora}): `, { defaultInput: revista.editora });
-        const status = readlineSync.question(`Status (${revista.status}): `, { defaultInput: revista.status });
-        const novaRevista = new Revista(id, titulo, ano, localizacao, editora, status);
-        biblioteca.atualizarItem(id, novaRevista);
-        console.log('Revista editada com sucesso!');
-    } else {
-        console.log('Revista não encontrada!');
-    }
-}
-
-function editarCD() {
-    const id = parseInt(readlineSync.question('ID do CD a ser editado: '));
-    const cd = biblioteca.listarItens().find((item: ItemAcervo) => item.id === id && item instanceof CD) as CD;
-    if (cd) {
-        console.log(`CD encontrada deixe em branco para não editar o campo atual`);
-        const titulo = readlineSync.question(`Titulo (${cd.titulo}): `, { defaultInput: cd.titulo });
-        const ano = parseInt(readlineSync.question(`Ano (${cd.ano}): `, { defaultInput: cd.ano.toString() }));
-        const localizacao = readlineSync.question(`Localizacao (${cd.localizacao}): `, { defaultInput: cd.localizacao });
-        const duracao = parseInt(readlineSync.question(`Duracao (${cd.duracao}): `, { defaultInput: cd.duracao.toString() }));
-        const status = readlineSync.question(`Status (${cd.status}): `, { defaultInput: cd.status });
-        const novoCD = new CD(id, titulo, ano, localizacao, duracao, status);
-        biblioteca.atualizarItem(id, novoCD);
-        console.log('CD editado com sucesso!');
-    } else {
-        console.log('CD não encontrado!');
-    }
-}
-
-function editarDVD() {
-    const id = parseInt(readlineSync.question('ID do DVD a ser editado: '));
-    const dvd = biblioteca.listarItens().find((item: ItemAcervo) => item.id === id && item instanceof DVD) as DVD;
-    if (dvd) {
-        console.log(`DVD encontrada deixe em branco para não editar o campo atual`);
-        const titulo = readlineSync.question(`Titulo (${dvd.titulo}): `, { defaultInput: dvd.titulo });
-        const ano = parseInt(readlineSync.question(`Ano (${dvd.ano}): `, { defaultInput: dvd.ano.toString() }));
-        const localizacao = readlineSync.question(`Localizacao (${dvd.localizacao}): `, { defaultInput: dvd.localizacao });
-        const duracao = parseInt(readlineSync.question(`Duracao (${dvd.duracao}): `, { defaultInput: dvd.duracao.toString() }));
-        const status = readlineSync.question(`Status (${dvd.status}): `, { defaultInput: dvd.status });
-        const novoDVD = new DVD(id, titulo, ano, localizacao, duracao, status);
-        biblioteca.atualizarItem(id, novoDVD);
-        console.log('DVD editado com sucesso!');
-    } else {
-        console.log('DVD não encontrado!');
-    }
-}
-
-while (true) {
-    const choice = menu();
-    switch (choice) {
+function mostrarMenu() {
+    console.log(`
+    1. Adicionar Item
+    2. Editar Item
+    3. Remover Item
+    4. Verificar Disponibilidade
+    5. Listar Itens
+    6. Sair
+    `);
+    const opcao = readlineSync.question('Escolha uma opcao: ');
+    switch (opcao) {
         case '1':
-            while (true) {
-                const addChoice = menuAdicionar();
-                if (addChoice === '5') break;
-                switch (addChoice) {
-                    case '1':
-                        adicionarLivro();
-                        break;
-                    case '2':
-                        adicionarRevista();
-                        break;
-                    case '3':
-                        adicionarCD();
-                        break;
-                    case '4':
-                        adicionarDVD();
-                        break;
-                    default:
-                        console.log('Opcao invalida!');
-                }
-            }
+            menuAdicionar();
             break;
         case '2':
-            while (true) {
-                const listChoice = menuListar();
-                if (listChoice === '6') break;
-                switch (listChoice) {
-                    case '1':
-                        listarLivros();
-                        break;
-                    case '2':
-                        listarRevistas();
-                        break;
-                    case '3':
-                        listarCDs();
-                        break;
-                    case '4':
-                        listarDVDs();
-                        break;
-                    case '5':
-                        listarTodosItens();
-                        break;
-                    default:
-                        console.log('Opcao invalida!');
-                }
-            }
+            menuEditar();
             break;
         case '3':
-            while (true) {
-                const removeChoice = menuRemover();
-                if (removeChoice === '6') break;
-                switch (removeChoice) {
-                    case '1':
-                        removerLivro();
-                        break;
-                    case '2':
-                        removerRevista();
-                        break;
-                    case '3':
-                        removerCD();
-                        break;
-                    case '4':
-                        removerDVD();
-                        break;
-                    case '5':
-                        removerTodosItens();
-                        break;
-                    default:
-                        console.log('Opcao invalida!');
-                }
-            }
+            menuRemover();
             break;
         case '4':
-            while (true) {
-                const editChoice = menuEditar();
-                if (editChoice === '5') break;
-                switch (editChoice) {
-                    case '1':
-                        editarLivro();
-                        break;
-                    case '2':
-                        editarRevista();
-                        break;
-                    case '3':
-                        editarCD();
-                        break;
-                    case '4':
-                        editarDVD();
-                        break;
-                    default:
-                        console.log('Opcao invalida!');
-                }
-            }
+            verificarDisponibilidade();
             break;
         case '5':
+            menuListar();
+            break;
+        case '6':
             console.log('Saindo...');
             process.exit(0);
         default:
             console.log('Opcao invalida!');
+            mostrarMenu();
+            break;
     }
 }
+
+function menuAdicionar() {
+    console.log(`
+    1. Cadastrar Livro
+    2. Cadastrar Revista
+    3. Cadastrar CD
+    4. Cadastrar DVD
+    5. Voltar
+    `);
+    const opcao = readlineSync.question('Escolha uma opcao: ');
+    switch (opcao) {
+        case '1':
+            cadastrarLivro();
+            break;
+        case '2':
+            cadastrarRevista();
+            break;
+        case '3':
+            cadastrarCD();
+            break;
+        case '4':
+            cadastrarDVD();
+            break;
+        case '5':
+            mostrarMenu();
+            break;
+        default:
+            console.log('Opcao invalida!');
+            menuAdicionar();
+            break;
+    }
+}
+
+function menuEditar() {
+    console.log(`
+    1. Editar Livro
+    2. Editar Revista
+    3. Editar CD
+    4. Editar DVD
+    5. Voltar
+    `);
+    const opcao = readlineSync.question('Escolha uma opcao: ');
+    switch (opcao) {
+        case '1':
+            editarItem('Livro');
+            break;
+        case '2':
+            editarItem('Revista');
+            break;
+        case '3':
+            editarItem('CD');
+            break;
+        case '4':
+            editarItem('DVD');
+            break;
+        case '5':
+            mostrarMenu();
+            break;
+        default:
+            console.log('Opcao invalida!');
+            menuEditar();
+            break;
+    }
+}
+
+function menuRemover() {
+    console.log(`
+    1. Remover Livro
+    2. Remover Revista
+    3. Remover CD
+    4. Remover DVD
+    5. Remover Todos
+    6. Voltar
+    `);
+    const opcao = readlineSync.question('Escolha uma opcao: ');
+    switch (opcao) {
+        case '1':
+            removerItem('Livro');
+            break;
+        case '2':
+            removerItem('Revista');
+            break;
+        case '3':
+            removerItem('CD');
+            break;
+        case '4':
+            removerItem('DVD');
+            break;
+        case '5':
+            removerTodos();
+            break;
+        case '6':
+            mostrarMenu();
+            break;
+        default:
+            console.log('Opcao invalida!');
+            menuRemover();
+            break;
+    }
+}
+
+function menuListar() {
+    console.log(`
+    1. Listar Livros
+    2. Listar Revistas
+    3. Listar CDs
+    4. Listar DVDs
+    5. Listar Todos
+    6. Voltar
+    `);
+    const opcao = readlineSync.question('Escolha uma opcao: ');
+    switch (opcao) {
+        case '1':
+            listarItens('Livro');
+            break;
+        case '2':
+            listarItens('Revista');
+            break;
+        case '3':
+            listarItens('CD');
+            break;
+        case '4':
+            listarItens('DVD');
+            break;
+        case '5':
+            listarItens();
+            break;
+        case '6':
+            mostrarMenu();
+            break;
+        default:
+            console.log('Opcao invalida!');
+            menuListar();
+            break;
+    }
+}
+
+function validarCampoObrigatorio(campo: string): string {
+    let valor: string;
+    do {
+        valor = readlineSync.question(`${campo}: `);
+        if (!valor) {
+            console.log(`O campo ${campo} e obrigatorio.`);
+        }
+    } while (!valor);
+    return valor;
+}
+
+function validarCampoNumerico(campo: string, tamanho: number): number {
+    let valor: number;
+    do {
+        valor = readlineSync.questionInt(`${campo}: `);
+        const valorStr = valor.toString();
+        if (!valor || valorStr.length !== tamanho) {
+            console.log(`O campo ${campo} e obrigatorio e deve ter ${tamanho} caracteres.`);
+        }
+    } while (!valor || valor.toString().length !== tamanho);
+    return valor;
+}
+
+function validarAno(campo: string): number {
+    const anoAtual = new Date().getFullYear();
+    let valor: number;
+    do {
+        valor = readlineSync.questionInt(`${campo}: `);
+        if (valor < 1000 || valor > anoAtual) {
+            console.log(`O campo ${campo} deve ser um ano válido entre 1000 e ${anoAtual}.`);
+        }
+    } while (valor < 1000 || valor > anoAtual);
+    return valor;
+}
+
+
+function validarDuracao(campo: string): number {
+    let minutos: number;
+    do {
+        minutos = readlineSync.questionInt(`${campo} (em minutos): `);
+        if (minutos < 0) {
+            console.log(`O campo ${campo} deve ser um número inteiro positivo.`);
+        }
+    } while (minutos < 0);
+    return minutos;
+}
+
+function cadastrarLivro() {
+    const titulo = validarCampoObrigatorio('Titulo');
+    const autor = validarCampoObrigatorio('Autor');
+    const editora = validarCampoObrigatorio('Editora');
+    const isbn = validarCampoNumerico('ISBN', 13);
+    const ano = validarAno('Ano');
+    const localizacao = validarCampoObrigatorio('Localizacao');
+
+    const livro = new Livro(titulo, ano, localizacao, isbn, autor, editora);
+    registrarItem(biblioteca, livro);
+    console.log(`Livro cadastrado com sucesso! ID: ${livro.id}, Titulo: ${livro.titulo}, Autor: ${livro.autor}, Editora: ${livro.editora}, ISBN: ${livro.isbn}, Ano: ${livro.ano}, Localizacao: ${livro.localizacao}`);
+    mostrarMenu();
+}
+
+function cadastrarRevista() {
+    const titulo = validarCampoObrigatorio('Titulo');
+    const editora = validarCampoObrigatorio('Editora');
+    const ano = validarAno('Ano');
+    const localizacao = validarCampoObrigatorio('Localizacao');
+
+    const revista = new Revista(titulo, ano, localizacao, editora);
+    registrarItem(biblioteca, revista);
+    console.log(`Revista cadastrada com sucesso! ID: ${revista.id}, Titulo: ${revista.titulo}, Editora: ${revista.editora}, Ano: ${revista.ano}, Localizacao: ${revista.localizacao}`);
+    mostrarMenu();
+}
+
+
+function cadastrarCD() {
+    const titulo = validarCampoObrigatorio('Titulo');
+    const ano = validarAno('Ano');
+    const localizacao = validarCampoObrigatorio('Localizacao');
+    const duracao = validarDuracao('Duracao');
+
+    const cd = new CD(titulo, ano, localizacao, duracao);
+    registrarItem(biblioteca, cd);
+    console.log(`CD cadastrado com sucesso! ID: ${cd.id}, Titulo: ${cd.titulo}, Ano: ${cd.ano}, Localizacao: ${cd.localizacao}, Duracao: ${cd.duracao}`);
+    mostrarMenu();
+}
+
+function cadastrarDVD() {
+    const titulo = validarCampoObrigatorio('Titulo');
+    const ano = validarAno('Ano');
+    const localizacao = validarCampoObrigatorio('Localizacao');
+    const duracao = validarDuracao('Duracao');
+
+    const dvd = new DVD(titulo, ano, localizacao, duracao);
+    registrarItem(biblioteca, dvd);
+    console.log(`DVD cadastrado com sucesso! ID: ${dvd.id}, Titulo: ${dvd.titulo}, Ano: ${dvd.ano}, Localizacao: ${dvd.localizacao}, Duracao: ${dvd.duracao}`);
+    mostrarMenu();
+}
+
+function editarItem(tipo: string) {
+    const id = readlineSync.questionInt(`ID do ${tipo} a ser editado: `);
+    const item = biblioteca.listarItens().find(item => item.id === id && item.constructor.name === tipo);
+    if (!item) {
+        console.log(`${tipo} não encontrado!`);
+        mostrarMenu();
+        return;
+    }
+    const titulo = readlineSync.question('Novo Titulo (deixe em branco para manter o atual): ');
+    const anoStr = readlineSync.question('Novo Ano (deixe em branco para manter o atual): ', { defaultInput: item.ano.toString() });
+    const localizacao = readlineSync.question('Nova Localizacao (deixe em branco para manter o atual): ');
+    const disponibilidade = readlineSync.question('Nova Disponibilidade (Disponivel, Indisponivel, Alugado, Reservado): ') as Disponibilidade;
+
+    if (titulo) item.titulo = titulo;
+    if (anoStr) item.ano = parseInt(anoStr, 10);
+    if (localizacao) item.localizacao = localizacao;
+    if (disponibilidade) item.disponibilidade = disponibilidade;
+
+    if (item instanceof Livro) {
+        const autor = readlineSync.question('Novo Autor (deixe em branco para manter o atual): ');
+        const editora = readlineSync.question('Nova Editora (deixe em branco para manter o atual): ');
+        const isbnStr = readlineSync.question('Novo ISBN (deixe em branco para manter o atual): ', { defaultInput: item.isbn.toString() });
+
+        if (autor) item.autor = autor;
+        if (editora) item.editora = editora;
+        if (isbnStr) item.isbn = parseInt(isbnStr, 10);
+    }
+
+    if (item instanceof Midia) {
+        const duracaoStr = readlineSync.question('Nova Duracao (em minutos, deixe em branco para manter o atual): ', { defaultInput: item.duracao.toString() });
+        if (duracaoStr) item.duracao = parseInt(duracaoStr, 10);
+    }
+
+    console.log(`${tipo} editado com sucesso! ID: ${item.id}, Titulo: ${item.titulo}, Ano: ${item.ano}, Localizacao: ${item.localizacao}, Disponibilidade: ${item.disponibilidade}`);
+    if (item instanceof Livro) {
+        console.log(`ISBN: ${item.isbn}, Autor: ${item.autor}, Editora: ${item.editora}`);
+    }
+    if (item instanceof Midia) {
+        console.log(`Duracao: ${item.duracao}`);
+    }
+    mostrarMenu();
+}
+
+function removerItem(tipo: string) {
+    const id = readlineSync.questionInt(`ID do ${tipo} a ser removido: `);
+    try {
+        const item = biblioteca.listarItens().find(item => item.id === id && item.constructor.name === tipo);
+        if (!item) {
+            throw new Error(`${tipo} não encontrado!`);
+        }
+        biblioteca.removerItem(id);
+        console.log(`${tipo} removido com sucesso! ID: ${item.id}, Titulo: ${item.titulo}`);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+        } else {
+            console.log('Erro desconhecido ao remover item.');
+        }
+    }
+    mostrarMenu();
+}
+
+function removerTodos() {
+    biblioteca.listarItens().forEach(item => {
+        biblioteca.removerItem(item.id);
+        console.log(`Item removido com sucesso! ID: ${item.id}, Titulo: ${item.titulo}`);
+    });
+    console.log('Todos os itens foram removidos com sucesso!');
+    mostrarMenu();
+}
+
+function verificarDisponibilidade() {
+    const id = readlineSync.questionInt('ID do item: ');
+    try {
+        const disponibilidade = biblioteca.verificarDisponibilidade(id);
+        console.log(`Disponibilidade: ${disponibilidade}`);
+    } catch (error) {
+        if (error instanceof Error) {
+            console.log(error.message);
+        } else {
+            console.log('Erro desconhecido ao verificar disponibilidade.');
+        }
+    }
+    mostrarMenu();
+}
+
+function listarItens(tipo?: string) {
+    const itens = tipo ? biblioteca.listarItens().filter(item => item.constructor.name === tipo) : biblioteca.listarItens();
+    console.log(itens);
+    mostrarMenu();
+}
+
+mostrarMenu();

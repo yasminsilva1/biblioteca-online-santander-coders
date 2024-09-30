@@ -1,19 +1,18 @@
-import { Publicacao } from './Publicacao';
+import Publicacao from './Publicacao';
 
-export class Livro extends Publicacao {
-    constructor(
-        id: number,
-        titulo: string,
-        ano: number,
-        localizacao: string,
-        public editora: string,
-        public isbn: string,
-        public status: string
-    ) {
-        super(id, titulo, ano, localizacao, editora, status);
-    }
+class Livro extends Publicacao {
+    isbn: number;
+    autor: string;
 
-    getInfo(): string {
-        return `Livro: ${this.titulo}, ISBN: ${this.isbn}, Status: ${this.status}`;
+    constructor(titulo: string, ano: number, localizacao: string, isbn: number, autor: string, editora: string) {
+        super(titulo, ano, localizacao, editora);
+        const isbnStr = isbn.toString();
+        if (!isbn || isbnStr.length !== 13) {
+            throw new Error("ISBN é obrigatório e deve ter 13 caracteres");
+        }
+        this.isbn = isbn;
+        this.autor = autor;
     }
 }
+
+export default Livro;

@@ -1,14 +1,15 @@
-import { ItemAcervo } from './ItemAcervo';
+import ItemAcervo from './ItemAcervo';
 
-export abstract class Midia extends ItemAcervo {
-    constructor(
-        id: number,
-        titulo: string,
-        ano: number,
-        localizacao: string,
-        public duracao: number,
-        public status: string
-    ) {
-        super(id, titulo, ano, localizacao, status);
+abstract class Midia extends ItemAcervo {
+    duracao: number;
+
+    constructor(titulo: string, ano: number, localizacao: string, duracao: number) {
+        super(titulo, ano, localizacao);
+        if (!duracao) {
+            throw new Error("Duração é obrigatória");
+        }
+        this.duracao = duracao;
     }
 }
+
+export default Midia;
