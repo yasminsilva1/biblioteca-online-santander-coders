@@ -1,4 +1,3 @@
-
 import Midia from './Midia';
 
 class DVD extends Midia {
