@@ -1,6 +1,6 @@
 import { Midia } from './Midia';
 
-export class DVD extends Midia {
+export class dvd extends Midia {
     constructor(
         id: number,
         titulo: string,

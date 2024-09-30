@@ -2,7 +2,7 @@ import { Biblioteca } from './services/Biblioteca';
 import { Livro } from './models/Livro';
 import { Revista } from './models/Revista';
 import { CD } from './models/CD';
-import { DVD } from './models/DVD';
+import { dvd } from './models/DVD';
 import { ItemAcervo } from './models/ItemAcervo';
 import { registrarItem } from './services/registrarItem';
 import readlineSync from 'readline-sync';
