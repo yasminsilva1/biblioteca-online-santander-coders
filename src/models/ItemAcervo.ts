@@ -1,4 +1,4 @@
-import Localizavel from '../interface/Localizavel';
+import Localizavel from '../interfaces/Localizavel';
 
 let currentId = 0;
 
