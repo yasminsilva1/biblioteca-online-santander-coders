@@ -1,4 +1,3 @@
-
 import readlineSync from 'readline-sync';
 import Biblioteca from './models/Biblioteca';
 import Livro from './models/Livro';
@@ -289,6 +288,7 @@ function editarItem(tipo: string) {
         mostrarMenu();
         return;
     }
+
     const titulo = readlineSync.question('Novo Titulo (deixe em branco para manter o atual): ');
     const anoStr = readlineSync.question('Novo Ano (deixe em branco para manter o atual): ', { defaultInput: item.ano.toString() });
     const localizacao = readlineSync.question('Nova Localizacao (deixe em branco para manter o atual): ');

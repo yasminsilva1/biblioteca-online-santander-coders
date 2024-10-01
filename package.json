@@ -6,7 +6,8 @@
   "author": "gabryelcosta, yasminsilva1, yagolc, vivianebalbino",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
   },
   "devDependencies": {
     "@types/node": "^22.7.4",
